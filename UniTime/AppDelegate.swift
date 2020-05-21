@@ -18,12 +18,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.image = NSImage(named: "StatusbarImage")
             button.imageScaling = .scaleProportionallyDown
         }
+        constructMenu()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-
+    private func constructMenu() {
+        let menu = NSMenu()
+        let view: MenuItemView = .instantiate()
+        let menuItem = NSMenuItem()
+        menuItem.view = view
+        menu.addItem(menuItem)
+        
+        statusItem.menu = menu
+    }
 }
 
