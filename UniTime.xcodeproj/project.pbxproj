@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		43424BB124756B4500F8747B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43424BB024756B4500F8747B /* AppDelegate.swift */; };
-		43424BB324756B4500F8747B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43424BB224756B4500F8747B /* ViewController.swift */; };
 		43424BB524756B4700F8747B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43424BB424756B4700F8747B /* Assets.xcassets */; };
 		43424BB824756B4700F8747B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43424BB624756B4700F8747B /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		43424BAD24756B4500F8747B /* UniTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43424BB024756B4500F8747B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		43424BB224756B4500F8747B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43424BB424756B4700F8747B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43424BB724756B4700F8747B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43424BB924756B4700F8747B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				43424BB024756B4500F8747B /* AppDelegate.swift */,
-				43424BB224756B4500F8747B /* ViewController.swift */,
 				43424BB424756B4700F8747B /* Assets.xcassets */,
 				43424BB624756B4700F8747B /* Main.storyboard */,
 				43424BB924756B4700F8747B /* Info.plist */,
@@ -133,7 +130,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43424BB324756B4500F8747B /* ViewController.swift in Sources */,
 				43424BB124756B4500F8747B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +275,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = dazy.UniTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -299,6 +296,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = dazy.UniTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
