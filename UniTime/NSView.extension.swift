@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSView {
-    static func instantiate<T: NSView>() -> T {
+    static func instantiateFromNib<T: NSView>() -> T {
         let nibName = String(describing: T.self)
         guard let nib = NSNib(nibNamed: nibName, bundle: nil) else {
             fatalError("failed to load \(nibName).")

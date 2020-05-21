@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func constructMenu() {
         let menu = NSMenu()
-        let view: MenuItemView = .instantiate()
+        let view: MenuItemView = .instantiateFromNib()
         let menuItem = NSMenuItem()
         menuItem.view = view
         menu.addItem(menuItem)
