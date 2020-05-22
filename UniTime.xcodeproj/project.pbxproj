@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,10 @@
 		43424BB824756B4700F8747B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43424BB624756B4700F8747B /* Main.storyboard */; };
 		438A04422478221E0020B95B /* TimeConvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A04402478221E0020B95B /* TimeConvertViewController.swift */; };
 		438A04432478221E0020B95B /* TimeConvertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438A04412478221E0020B95B /* TimeConvertViewController.xib */; };
+		438A044624783B390020B95B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044524783B390020B95B /* RxRelay */; };
+		438A044824783B390020B95B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044724783B390020B95B /* RxSwift */; };
+		438A044A24783B390020B95B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044924783B390020B95B /* RxCocoa */; };
+		438A044C247845020020B95B /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A044B247845020020B95B /* PublishRelay.extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,7 @@
 		43424BBA24756B4700F8747B /* UniTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UniTime.entitlements; sourceTree = "<group>"; };
 		438A04402478221E0020B95B /* TimeConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertViewController.swift; sourceTree = "<group>"; };
 		438A04412478221E0020B95B /* TimeConvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeConvertViewController.xib; sourceTree = "<group>"; };
+		438A044B247845020020B95B /* PublishRelay.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438A044A24783B390020B95B /* RxCocoa in Frameworks */,
+				438A044824783B390020B95B /* RxSwift in Frameworks */,
+				438A044624783B390020B95B /* RxRelay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +66,7 @@
 				43424BB024756B4500F8747B /* AppDelegate.swift */,
 				438A04402478221E0020B95B /* TimeConvertViewController.swift */,
 				438A04412478221E0020B95B /* TimeConvertViewController.xib */,
+				438A044B247845020020B95B /* PublishRelay.extension.swift */,
 				43424BB424756B4700F8747B /* Assets.xcassets */,
 				43424BB924756B4700F8747B /* Info.plist */,
 				43424BB624756B4700F8747B /* Main.storyboard */,
@@ -82,6 +91,11 @@
 			dependencies = (
 			);
 			name = UniTime;
+			packageProductDependencies = (
+				438A044524783B390020B95B /* RxRelay */,
+				438A044724783B390020B95B /* RxSwift */,
+				438A044924783B390020B95B /* RxCocoa */,
+			);
 			productName = UniTime;
 			productReference = 43424BAD24756B4500F8747B /* UniTime.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 43424BA424756B4500F8747B;
+			packageReferences = (
+				438A044424783B390020B95B /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 43424BAE24756B4500F8747B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438A044C247845020020B95B /* PublishRelay.extension.swift in Sources */,
 				43424BB124756B4500F8747B /* AppDelegate.swift in Sources */,
 				438A04422478221E0020B95B /* TimeConvertViewController.swift in Sources */,
 			);
@@ -335,6 +353,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		438A044424783B390020B95B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		438A044524783B390020B95B /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438A044424783B390020B95B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		438A044724783B390020B95B /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438A044424783B390020B95B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		438A044924783B390020B95B /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 438A044424783B390020B95B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 43424BA524756B4500F8747B /* Project object */;
 }
