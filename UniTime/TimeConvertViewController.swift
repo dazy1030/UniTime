@@ -46,34 +46,40 @@ class TimeConvertViewController: NSViewController {
             .asDriver(onErrorJustReturn: "")
             .drive(inputTextRelay)
             .disposed(by: disposeBag)
+        
         inputTextRelay.asDriver()
             .drive(inputTextField.rx.text)
             .disposed(by: disposeBag)
+        
         inputTextField.rx.text
             .orEmpty
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: "")
             .drive(inputTextRelay)
             .disposed(by: disposeBag)
+        
         let inputTextDriver = inputTextRelay.asDriver()
         let errorText = "failed to convert."
+        
         unixtimeResultView.configure(with: inputTextDriver) { [weak self] inputText in
-            guard
-                let self = self,
-                let date = self.dateFormatter.date(from: inputText)
-            else {
-                return errorText
+            guard let self = self else { return errorText }
+            if let date = self.dateFormatter.date(from: inputText) {
+                return String(Int(date.timeIntervalSince1970))
+            } else if Double(inputText) != nil {
+                return inputText
             }
-            return String(Int(date.timeIntervalSince1970))
+            return errorText
         }
+        
         dateResultView.configure(with: inputTextDriver) { [weak self] inputText in
-            guard
-                let self = self,
-                let date = self.dateFormatter.date(from: inputText)
-            else {
-                return errorText
+            guard let self = self else { return errorText }
+            if let date = self.dateFormatter.date(from: inputText) {
+                return self.dateFormatter.string(from: date)
+            } else if let unixtime = Double(inputText) {
+                let date = Date(timeIntervalSince1970: unixtime)
+                return self.dateFormatter.string(from: date)
             }
-            return self.dateFormatter.string(from: date)
+            return errorText
         }
     }
 }
