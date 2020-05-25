@@ -14,8 +14,8 @@ class TimeConvertViewController: NSViewController {
     // MARK: - Views
     
     @IBOutlet private weak var inputTextField: NSTextField!
-    @IBOutlet private weak var convertButton: NSButton!
-    @IBOutlet private weak var convertResultLabel: NSTextField!
+    @IBOutlet private weak var unixtimeResultView: ConvertResultView!
+    @IBOutlet private weak var dateResultView: ConvertResultView!
     
     // MARK: - Properties
     
@@ -24,11 +24,10 @@ class TimeConvertViewController: NSViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
-    private let inputText = PublishRelay<String>()
-
+    private let inputTextRelay = BehaviorRelay<String>(value: "")
     private let disposeBag = DisposeBag()
     
-    // MARK: - Life Cycle
+    // MARK: - NSViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,35 +35,45 @@ class TimeConvertViewController: NSViewController {
         bind()
     }
     
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        
-        let now = Date()
-        inputText.accept(dateFormatter.string(from: now))
-    }
-    
     // MARK: - Methods
     
     private func bind() {
-        inputText
-            .bind(to: inputTextField.rx.text)
-            .disposed(by: disposeBag)
-        inputTextField.rx.text.orEmpty
-            .bind(to: inputText.asObserver())
-            .disposed(by: disposeBag)
-        let convertResult = inputText
-            .distinctUntilChanged()
-            .compactMap { [weak self] text -> String? in
-                guard
-                    let date = self?.dateFormatter.date(from: text)
-                else {
-                    return "couldn't convert."
-                }
-                return String(Int(date.timeIntervalSince1970))
+        rx.methodInvoked(#selector(viewWillAppear))
+            .compactMap { [weak self] _ -> String? in
+                let now = Date()
+                return self?.dateFormatter.string(from: now)
             }
-            .observeOn(MainScheduler.instance)
-        convertResult
-            .bind(to: convertResultLabel.rx.text)
+            .asDriver(onErrorJustReturn: "")
+            .drive(inputTextRelay)
             .disposed(by: disposeBag)
+        inputTextRelay.asDriver()
+            .drive(inputTextField.rx.text)
+            .disposed(by: disposeBag)
+        inputTextField.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+            .drive(inputTextRelay)
+            .disposed(by: disposeBag)
+        let inputTextDriver = inputTextRelay.asDriver()
+        let errorText = "failed to convert."
+        unixtimeResultView.configure(with: inputTextDriver) { [weak self] inputText in
+            guard
+                let self = self,
+                let date = self.dateFormatter.date(from: inputText)
+            else {
+                return errorText
+            }
+            return String(Int(date.timeIntervalSince1970))
+        }
+        dateResultView.configure(with: inputTextDriver) { [weak self] inputText in
+            guard
+                let self = self,
+                let date = self.dateFormatter.date(from: inputText)
+            else {
+                return errorText
+            }
+            return self.dateFormatter.string(from: date)
+        }
     }
 }
