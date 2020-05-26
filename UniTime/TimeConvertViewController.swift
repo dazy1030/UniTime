@@ -90,5 +90,18 @@ class TimeConvertViewController: NSViewController {
             }
             return errorText
         }
+        
+        // チェックマークは常に一つだけになる様にする
+        unixtimeResultView.copuButtonChecked.asDriver()
+            .filter { $0 }
+            .map { !$0 }
+            .drive(dateResultView.copuButtonChecked)
+            .disposed(by: disposeBag)
+        
+        dateResultView.copuButtonChecked.asDriver()
+            .filter { $0 }
+            .map { !$0 }
+            .drive(unixtimeResultView.copuButtonChecked)
+            .disposed(by: disposeBag)
     }
 }

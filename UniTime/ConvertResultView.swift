@@ -38,6 +38,9 @@ final class ConvertResultView: NSView {
         return button
     }()
     
+    private let clipboardImage = NSImage(named: .clipboard)
+    private let checkMarkImage = NSImage(named: .checkMark)
+    
     // MARK: - Properties
     
     @IBInspectable
@@ -47,6 +50,8 @@ final class ConvertResultView: NSView {
     }
     private let disposeBag = DisposeBag()
     private let board = NSPasteboard.general
+    
+    var copuButtonChecked = BehaviorRelay<Bool>(value: false)
     
     // MARK: - NSView
     
@@ -86,10 +91,21 @@ final class ConvertResultView: NSView {
             make.top.equalTo(resultTextField.snp.top)
             make.size.equalTo(CGSize(width: 20, height: 20))
         }
+        
+        copuButtonChecked.asDriver()
+            .distinctUntilChanged()
+            .do(onNext: { [weak self] checked in
+                let image = checked ? self?.checkMarkImage : self?.clipboardImage
+                self?.copyButton.image = image
+            })
+            .drive()
+            .disposed(by: disposeBag)
     }
     
     func configure(with input: Driver<String>, converter: @escaping (String) -> String) {
+        // 入力が更新されたらボタンのチェックマークは外す
         input
+            .do(onNext: { [weak self] _ in self?.copuButtonChecked.accept(false) })
             .map(converter)
             .drive(resultTextField.rx.text)
             .disposed(by: disposeBag)
@@ -101,5 +117,6 @@ final class ConvertResultView: NSView {
         let item = NSPasteboardItem()
         item.setString(resultTextField.stringValue, forType: .string)
         board.writeObjects([item])
+        copuButtonChecked.accept(true)
     }
 }

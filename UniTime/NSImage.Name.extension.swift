@@ -9,5 +9,6 @@
 import Cocoa
 
 extension NSImage.Name {
-    static let clipboard = NSImage.Name("clipboard")
+    static let clipboard = NSImage.Name("Clipboard")
+    static let checkMark = NSImage.Name("CheckMark")
 }
