@@ -26,6 +26,9 @@ class TimeConvertViewController: NSViewController {
     }()
     private let inputTextRelay = BehaviorRelay<String>(value: "")
     private let disposeBag = DisposeBag()
+    private var minimumUnixtime: Double? {
+        dateFormatter.date(from: "0001-01-01 00:00:00")?.timeIntervalSince1970
+    }
     
     // MARK: - NSViewController
     
@@ -76,8 +79,14 @@ class TimeConvertViewController: NSViewController {
             if let date = self.dateFormatter.date(from: inputText) {
                 return self.dateFormatter.string(from: date)
             } else if let unixtime = Double(inputText) {
+                if let minimumUnixtime = self.minimumUnixtime, unixtime < minimumUnixtime {
+                    return errorText
+                }
                 let date = Date(timeIntervalSince1970: unixtime)
-                return self.dateFormatter.string(from: date)
+                // 桁があまりに多い場合、以下の結果が空文字となる
+                let dateString = self.dateFormatter.string(from: date)
+                guard dateString.isNotEmpty else { return errorText }
+                return dateString
             }
             return errorText
         }
