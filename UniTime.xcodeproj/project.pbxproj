@@ -15,7 +15,6 @@
 		438A044624783B390020B95B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044524783B390020B95B /* RxRelay */; };
 		438A044824783B390020B95B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044724783B390020B95B /* RxSwift */; };
 		438A044A24783B390020B95B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 438A044924783B390020B95B /* RxCocoa */; };
-		438A044C247845020020B95B /* PublishRelay.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A044B247845020020B95B /* PublishRelay.extension.swift */; };
 		438A0452247A2D230020B95B /* ConvertResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0451247A2D230020B95B /* ConvertResultView.swift */; };
 		438A0455247A7D3B0020B95B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 438A0454247A7D3B0020B95B /* SnapKit */; };
 		438A0457247A81AC0020B95B /* NSImage.Name.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438A0456247A81AC0020B95B /* NSImage.Name.extension.swift */; };
@@ -31,7 +30,6 @@
 		43424BBA24756B4700F8747B /* UniTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UniTime.entitlements; sourceTree = "<group>"; };
 		438A04402478221E0020B95B /* TimeConvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeConvertViewController.swift; sourceTree = "<group>"; };
 		438A04412478221E0020B95B /* TimeConvertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeConvertViewController.xib; sourceTree = "<group>"; };
-		438A044B247845020020B95B /* PublishRelay.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRelay.extension.swift; sourceTree = "<group>"; };
 		438A0451247A2D230020B95B /* ConvertResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResultView.swift; sourceTree = "<group>"; };
 		438A0456247A81AC0020B95B /* NSImage.Name.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.Name.extension.swift; sourceTree = "<group>"; };
 		438A0458247D5EAD0020B95B /* String.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.extension.swift; sourceTree = "<group>"; };
@@ -75,13 +73,12 @@
 				438A04402478221E0020B95B /* TimeConvertViewController.swift */,
 				438A04412478221E0020B95B /* TimeConvertViewController.xib */,
 				438A0451247A2D230020B95B /* ConvertResultView.swift */,
-				438A044B247845020020B95B /* PublishRelay.extension.swift */,
 				438A0456247A81AC0020B95B /* NSImage.Name.extension.swift */,
+				438A0458247D5EAD0020B95B /* String.extension.swift */,
 				43424BB424756B4700F8747B /* Assets.xcassets */,
 				43424BB924756B4700F8747B /* Info.plist */,
 				43424BB624756B4700F8747B /* Main.storyboard */,
 				43424BBA24756B4700F8747B /* UniTime.entitlements */,
-				438A0458247D5EAD0020B95B /* String.extension.swift */,
 			);
 			path = UniTime;
 			sourceTree = "<group>";
@@ -169,7 +166,6 @@
 			files = (
 				438A0457247A81AC0020B95B /* NSImage.Name.extension.swift in Sources */,
 				438A0459247D5EAD0020B95B /* String.extension.swift in Sources */,
-				438A044C247845020020B95B /* PublishRelay.extension.swift in Sources */,
 				438A0452247A2D230020B95B /* ConvertResultView.swift in Sources */,
 				43424BB124756B4500F8747B /* AppDelegate.swift in Sources */,
 				438A04422478221E0020B95B /* TimeConvertViewController.swift in Sources */,
